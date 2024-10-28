@@ -309,6 +309,7 @@ struct PACKED log_Heli {
     float    main_rotor_speed;
     float    governor_output;
     float    control_output;
+    float    spool_state;
 };
 
 // Write an helicopter packet
@@ -321,6 +322,7 @@ void Copter::Log_Write_Heli()
         main_rotor_speed        : motors->get_main_rotor_speed(),
         governor_output         : motors->get_governor_output(),
         control_output          : motors->get_control_output(),
+        spool_state             : static_cast<float>(static_cast<uint8_t>(motors->get_spool_state())),
     };
     logger.WriteBlock(&pkt_heli, sizeof(pkt_heli));
 }
@@ -491,7 +493,7 @@ const struct LogStructure Copter::log_structure[] = {
 // @Field: Throt: Throttle output
 #if FRAME_CONFIG == HELI_FRAME
     { LOG_HELI_MSG, sizeof(log_Heli),
-      "HELI",  "Qffff",        "TimeUS,DRRPM,ERRPM,Gov,Throt", "s----", "F----" , true },
+      "HELI",  "Qfffff",        "TimeUS,DRRPM,ERRPM,Gov,Throt,SplSt", "s-----", "F-----" , true },
 #endif
 
 // @LoggerMessage: SIDD
