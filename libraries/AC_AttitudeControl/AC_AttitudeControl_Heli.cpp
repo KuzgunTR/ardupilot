@@ -449,7 +449,7 @@ float AC_AttitudeControl_Heli::rate_target_to_motor_yaw(float rate_yaw_actual_ra
         _pid_rate_yaw.update_leaky_i(AC_ATTITUDE_HELI_RATE_INTEGRATOR_LEAK_RATE);
     }
 
-    float pid = _pid_rate_yaw.update_all(rate_target_rads, rate_yaw_actual_rads, _dt, 1.0f, _motors.limit.yaw, 1.0f, !((AP_MotorsHeli&)_motors).rotor_runup_complete()) + _actuator_sysid.z;
+    float pid = _pid_rate_yaw.update_all(rate_target_rads, rate_yaw_actual_rads, _dt, _motors.limit.yaw, 1.0f, !((AP_MotorsHeli&)_motors).rotor_runup_complete()) + _actuator_sysid.z;
 
     // use pid library to calculate ff
     float vff = _pid_rate_yaw.get_ff()*_feedforward_scalar;
