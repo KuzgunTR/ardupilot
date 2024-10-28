@@ -124,7 +124,7 @@ void AC_PID::slew_limit(float smax)
 //  target and error are filtered
 //  the derivative is then calculated and filtered
 //  the integral is then updated based on the setting of the limit flag
-float AC_PID::update_all(float target, float measurement, float dt, bool limit, float boost)
+float AC_PID::update_all(float target, float measurement, float dt, bool limit, float boost, bool lkflg)
 {
     // don't process inf or NaN
     if (!isfinite(target) || !isfinite(measurement)) {
@@ -171,6 +171,7 @@ float AC_PID::update_all(float target, float measurement, float dt, bool limit, 
     _pid_info.error = _error;
     _pid_info.P = P_out;
     _pid_info.D = D_out;
+    _pid_info.leakflag = lkflg; ;
 
     return P_out + _integrator + D_out;
 }

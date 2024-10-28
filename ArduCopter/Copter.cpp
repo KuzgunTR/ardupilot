@@ -510,6 +510,8 @@ void Copter::loop_rate_logging()
         AP::ins().Write_IMU();
     }
 
+    // Changing to loop rate logging for Motor Mixer Validation 
+
     if (should_log(MASK_LOG_RCOUT)) {
         logger.Write_RCOUT();
     }
