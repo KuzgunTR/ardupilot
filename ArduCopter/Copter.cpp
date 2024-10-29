@@ -515,6 +515,13 @@ void Copter::loop_rate_logging()
     if (should_log(MASK_LOG_RCOUT)) {
         logger.Write_RCOUT();
     }
+
+    // Special parameter adding to HELI package
+
+    #if FRAME_CONFIG == HELI_FRAME
+    Log_Write_Heli();
+    #endif
+
 }
 
 // ten_hz_logging_loop
@@ -558,9 +565,7 @@ void Copter::ten_hz_logging_loop()
         g2.beacon.log();
 #endif
     }
-#if FRAME_CONFIG == HELI_FRAME
-    Log_Write_Heli();
-#endif
+
 #if AP_WINCH_ENABLED
     if (should_log(MASK_LOG_ANY)) {
         g2.winch.write_log();
