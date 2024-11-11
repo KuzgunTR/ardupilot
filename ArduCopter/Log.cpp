@@ -314,6 +314,7 @@ struct PACKED log_Heli {
     float    land_comp_may;
     float    dynmc_flight;
     float    rll_trim;
+    float    spd_xy;
 };
 
 // Write an helicopter packet
@@ -331,6 +332,7 @@ void Copter::Log_Write_Heli()
         land_comp_may           : float(ap.land_complete_maybe), 
         dynmc_flight            : float(heli_flags.dynamic_flight),
         rll_trim                : float(copter.attitude_control->get_roll_trim_cd()),
+        spd_xy                  : float(inertial_nav.get_speed_xy_cms()),
     };
     logger.WriteBlock(&pkt_heli, sizeof(pkt_heli));
 }
@@ -501,7 +503,7 @@ const struct LogStructure Copter::log_structure[] = {
 // @Field: Throt: Throttle output
 #if FRAME_CONFIG == HELI_FRAME
     { LOG_HELI_MSG, sizeof(log_Heli),
-      "HELI",  "Qfffffffff",        "TimeUS,DRRPM,ERRPM,Gov,Throt,SplSt,Lcmp,Lcmpm,DyFly,RllTr", "s---------", "F---------" , true },
+      "HELI",  "Qffffffffff",        "TimeUS,DRRPM,ERRPM,Gov,Throt,SplSt,Lcmp,Lcmpm,DyFly,RllTr,SpdXY", "s----------", "F----------" , true },
 #endif
 
 // @LoggerMessage: SIDD
