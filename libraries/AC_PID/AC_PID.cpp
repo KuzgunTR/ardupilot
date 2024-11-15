@@ -171,7 +171,8 @@ float AC_PID::update_all(float target, float measurement, float dt, bool limit, 
     _pid_info.error = _error;
     _pid_info.P = P_out;
     _pid_info.D = D_out;
-    _pid_info.leakflag = lkflg; ;
+    _pid_info.leakflag = lkflg;
+    _pid_info.slrlpf = _slew_limiter.get_slew_rate_f();
 
     return P_out + _integrator + D_out;
 }

@@ -478,7 +478,8 @@ void AP_Logger::Write_PID(uint8_t msg_type, const AP_PIDInfo &info)
         Dmod            : info.Dmod,
         slew_rate       : info.slew_rate,
         limit           : info.limit,
-        leakflag        : info.leakflag
+        leakflag        : info.leakflag,
+        slrlpf           : info.slrlpf
     };
     WriteBlock(&pkt, sizeof(pkt));
 }

@@ -406,6 +406,7 @@ struct PACKED log_PID {
     float   slew_rate;
     uint8_t limit;
     bool    leakflag;
+    float   slrlpf;
 };
 
 struct PACKED log_WheelEncoder {
@@ -686,10 +687,10 @@ struct PACKED log_VER {
 // UNIT messages define units which can be referenced by FMTU messages
 // FMTU messages associate types (e.g. centimeters/second/second) to FMT message fields
 
-#define PID_LABELS "TimeUS,Tar,Act,Err,P,I,D,FF,Dmod,SRate,Limit,Leak"
-#define PID_FMT    "QfffffffffBB"
-#define PID_UNITS  "s-----------"
-#define PID_MULTS  "F-----------"
+#define PID_LABELS "TimeUS,Tar,Act,Err,P,I,D,FF,Dmod,SRate,Limit,Leak,Slrlp"
+#define PID_FMT    "QfffffffffBBf"
+#define PID_UNITS  "s------------"
+#define PID_MULTS  "F------------"
 
 #define PIDx_FMT "Qffffffff"
 #define PIDx_UNITS "smmnnnooo"

@@ -29,6 +29,12 @@ public:
         return _output_slew_rate;
     }
 
+  // adding to logging purpose 
+    float get_slew_rate_f(void) const {
+        return slew_rate_f;
+    }
+
+
 private:
     const float &slew_rate_max;
     const float &slew_rate_tau;
@@ -36,6 +42,7 @@ private:
     float _output_slew_rate;
     float _modifier_slew_rate;
     float last_sample;
+    float slew_rate_f;
     float _max_pos_slew_rate;
     float _max_neg_slew_rate;
     uint32_t _max_pos_slew_event_ms;

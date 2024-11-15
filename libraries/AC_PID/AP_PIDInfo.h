@@ -18,4 +18,5 @@ struct AP_PIDInfo {
     float slew_rate;
     bool  limit;
     bool  leakflag;
+    float slrlpf;
 };
