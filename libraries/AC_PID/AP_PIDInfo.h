@@ -19,4 +19,6 @@ struct AP_PIDInfo {
     bool  limit;
     bool  leakflag;
     float slrlpf;
+    uint32_t nowmls;
+    float tarnf;
 };

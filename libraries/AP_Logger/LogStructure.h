@@ -162,11 +162,11 @@ struct LogStructure {
 };
 
 // maximum lengths of fields in LogStructure, including trailing nulls
-static const uint8_t LS_NAME_SIZE = 5;
-static const uint8_t LS_FORMAT_SIZE = 17;
-static const uint8_t LS_LABELS_SIZE = 65;
-static const uint8_t LS_UNITS_SIZE = 17;
-static const uint8_t LS_MULTIPLIERS_SIZE = 17;
+static const uint8_t LS_NAME_SIZE = 8;
+static const uint8_t LS_FORMAT_SIZE = 30;
+static const uint8_t LS_LABELS_SIZE = 90;
+static const uint8_t LS_UNITS_SIZE = 30;
+static const uint8_t LS_MULTIPLIERS_SIZE = 30;
 
 /*
   log structures common to all vehicle types
@@ -406,7 +406,9 @@ struct PACKED log_PID {
     float   slew_rate;
     uint8_t limit;
     bool    leakflag;
-    float   slrlpf;
+    float    slrlpf;
+    uint32_t nowmls;
+    float    tarnf;
 };
 
 struct PACKED log_WheelEncoder {
@@ -687,10 +689,10 @@ struct PACKED log_VER {
 // UNIT messages define units which can be referenced by FMTU messages
 // FMTU messages associate types (e.g. centimeters/second/second) to FMT message fields
 
-#define PID_LABELS "TimeUS,Tar,Act,Err,P,I,D,FF,Dmod,SRate,Limit,Leak,Slrlp"
-#define PID_FMT    "QfffffffffBBf"
-#define PID_UNITS  "s------------"
-#define PID_MULTS  "F------------"
+#define PID_LABELS "TimeUS,Tar,Act,Err,P,I,D,FF,Dmod,SRate,Limit,Leak,Slrlp,Nowms,Tarnf"
+#define PID_FMT    "QfffffffffBBfIf"
+#define PID_UNITS  "s------------s-"
+#define PID_MULTS  "F------------C-"
 
 #define PIDx_FMT "Qffffffff"
 #define PIDx_UNITS "smmnnnooo"

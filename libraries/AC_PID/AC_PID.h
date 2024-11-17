@@ -149,7 +149,9 @@ protected:
     float _target;            // target value to enable filtering
     float _error;             // error value to enable filtering
     float _derivative;        // derivative value to enable filtering
-    int8_t _slew_limit_scale;
+    int8_t _slew_limit_scale; 
+    float tarnf;              // unfiltered target value 
+
 
     AP_PIDInfo _pid_info;
 

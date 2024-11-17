@@ -3,6 +3,13 @@
     "astyle.astylerc": "${workspaceFolder}/Tools/CodeStyle/astylerc",
     "files.associations": {
         "typeinfo": "cpp",
-        "functional": "cpp"
-    }
+        "functional": "cpp",
+        "thread": "cpp",
+        "*.ipp": "cpp",
+        "*.tcc": "cpp",
+        "iomanip": "cpp",
+        "regex": "cpp",
+        "type_traits": "cpp"
+    },
+    "cmake.sourceDirectory": "/home/kuzgun/ardupilot/modules/DroneCAN/libcanard/tests"
 }

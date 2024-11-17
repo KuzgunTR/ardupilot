@@ -34,6 +34,9 @@ public:
         return slew_rate_f;
     }
 
+    uint32_t get_now_ml(void) const {
+        return now_ml;
+    }
 
 private:
     const float &slew_rate_max;
@@ -43,6 +46,7 @@ private:
     float _modifier_slew_rate;
     float last_sample;
     float slew_rate_f;
+    uint32_t now_ml;
     float _max_pos_slew_rate;
     float _max_neg_slew_rate;
     uint32_t _max_pos_slew_event_ms;

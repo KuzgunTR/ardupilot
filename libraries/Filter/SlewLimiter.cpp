@@ -56,6 +56,8 @@ float SlewLimiter::modifier(float sample, float dt)
 
     uint32_t now_ms = AP_HAL::millis();
 
+    now_ml = now_ms;
+
     // Apply a filter to decay maximum seen slew rate once the value had left the window period
     const float decay_alpha = fminf(dt, slew_rate_tau) / slew_rate_tau;
 
